@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ispit">
+          <Key>
+            <PropertyRef Name="ispit_id" />
+          </Key>
+          <Property Name="ispit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="sifra" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="student_id" />
+          </Key>
+          <Property Name="student_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student_ispit">
+          <Key>
+            <PropertyRef Name="student_ispit_id" />
+          </Key>
+          <Property Name="student_ispit_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_id" Type="bigint" Nullable="false" />
+          <Property Name="ispit_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student_telefon">
+          <Key>
+            <PropertyRef Name="student_telefon_id" />
+          </Key>
+          <Property Name="student_telefon_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_id" Type="bigint" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_student_ispit_ispit">
+          <End Role="ispit" Type="Self.ispit" Multiplicity="1" />
+          <End Role="student_ispit" Type="Self.student_ispit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ispit">
+              <PropertyRef Name="ispit_id" />
+            </Principal>
+            <Dependent Role="student_ispit">
+              <PropertyRef Name="ispit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_ispit_student">
+          <End Role="student" Type="Self.student" Multiplicity="1" />
+          <End Role="student_ispit" Type="Self.student_ispit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_id" />
+            </Principal>
+            <Dependent Role="student_ispit">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_telefon_student">
+          <End Role="student" Type="Self.student" Multiplicity="1" />
+          <End Role="student_telefon" Type="Self.student_telefon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_id" />
+            </Principal>
+            <Dependent Role="student_telefon">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OOPModelStoreContainer">
+          <EntitySet Name="ispit" EntityType="Self.ispit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student_ispit" EntityType="Self.student_ispit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student_telefon" EntityType="Self.student_telefon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_student_ispit_ispit" Association="Self.FK_student_ispit_ispit">
+            <End Role="ispit" EntitySet="ispit" />
+            <End Role="student_ispit" EntitySet="student_ispit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_ispit_student" Association="Self.FK_student_ispit_student">
+            <End Role="student" EntitySet="student" />
+            <End Role="student_ispit" EntitySet="student_ispit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_telefon_student" Association="Self.FK_student_telefon_student">
+            <End Role="student" EntitySet="student" />
+            <End Role="student_telefon" EntitySet="student_telefon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ispit">
+          <Key>
+            <PropertyRef Name="ispit_id" />
+          </Key>
+          <Property Name="ispit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sifra" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student_ispit" Relationship="Self.FK_student_ispit_ispit" FromRole="ispit" ToRole="student_ispit" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="student_id" />
+          </Key>
+          <Property Name="student_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="index" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="student_ispit" Relationship="Self.FK_student_ispit_student" FromRole="student" ToRole="student_ispit" />
+          <NavigationProperty Name="student_telefon" Relationship="Self.FK_student_telefon_student" FromRole="student" ToRole="student_telefon" />
+        </EntityType>
+        <EntityType Name="student_ispit">
+          <Key>
+            <PropertyRef Name="student_ispit_id" />
+          </Key>
+          <Property Name="student_ispit_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="Int64" Nullable="false" />
+          <Property Name="ispit_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ispit" Relationship="Self.FK_student_ispit_ispit" FromRole="student_ispit" ToRole="ispit" />
+          <NavigationProperty Name="student" Relationship="Self.FK_student_ispit_student" FromRole="student_ispit" ToRole="student" />
+        </EntityType>
+        <EntityType Name="student_telefon">
+          <Key>
+            <PropertyRef Name="student_telefon_id" />
+          </Key>
+          <Property Name="student_telefon_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="Int64" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="student" Relationship="Self.FK_student_telefon_student" FromRole="student_telefon" ToRole="student" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_student_ispit_ispit">
+          <End Role="ispit" Type="Self.ispit" Multiplicity="1" />
+          <End Role="student_ispit" Type="Self.student_ispit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ispit">
+              <PropertyRef Name="ispit_id" />
+            </Principal>
+            <Dependent Role="student_ispit">
+              <PropertyRef Name="ispit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_ispit_student">
+          <End Role="student" Type="Self.student" Multiplicity="1" />
+          <End Role="student_ispit" Type="Self.student_ispit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_id" />
+            </Principal>
+            <Dependent Role="student_ispit">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_telefon_student">
+          <End Role="student" Type="Self.student" Multiplicity="1" />
+          <End Role="student_telefon" Type="Self.student_telefon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="student_id" />
+            </Principal>
+            <Dependent Role="student_telefon">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OOPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ispits" EntityType="Self.ispit" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="student_ispit" EntityType="Self.student_ispit" />
+          <EntitySet Name="student_telefon" EntityType="Self.student_telefon" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_student_ispit_ispit" Association="Self.FK_student_ispit_ispit">
+            <End Role="ispit" EntitySet="ispits" />
+            <End Role="student_ispit" EntitySet="student_ispit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_ispit_student" Association="Self.FK_student_ispit_student">
+            <End Role="student" EntitySet="students" />
+            <End Role="student_ispit" EntitySet="student_ispit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_telefon_student" Association="Self.FK_student_telefon_student">
+            <End Role="student" EntitySet="students" />
+            <End Role="student_telefon" EntitySet="student_telefon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OOPModelStoreContainer" CdmEntityContainer="OOPEntities">
+          <EntitySetMapping Name="ispits">
+            <EntityTypeMapping TypeName="OOPModel.ispit">
+              <MappingFragment StoreEntitySet="ispit">
+                <ScalarProperty Name="ispit_id" ColumnName="ispit_id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="OOPModel.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="index" ColumnName="index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student_ispit">
+            <EntityTypeMapping TypeName="OOPModel.student_ispit">
+              <MappingFragment StoreEntitySet="student_ispit">
+                <ScalarProperty Name="student_ispit_id" ColumnName="student_ispit_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="ispit_id" ColumnName="ispit_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student_telefon">
+            <EntityTypeMapping TypeName="OOPModel.student_telefon">
+              <MappingFragment StoreEntitySet="student_telefon">
+                <ScalarProperty Name="student_telefon_id" ColumnName="student_telefon_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OOPModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

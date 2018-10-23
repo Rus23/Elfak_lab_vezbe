@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5485781F-7191-4229-B234-C864DE8D1C6C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OOP_LV1</RootNamespace>
+    <AssemblyName>OOP LV1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OOP LV1.Extensions\OOP LV1.Extensions.csproj">
+      <Project>{bfe7e16e-949d-42b4-878e-50c2b2db4c4c}</Project>
+      <Name>OOP LV1.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OOP LV1.Podaci\OOP LV1.Podaci.csproj">
+      <Project>{7734e00f-f47e-4d72-835a-1259a2f6fc8f}</Project>
+      <Name>OOP LV1.Podaci</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floppy-save-icon-84413.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_add-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add - mala.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\004-plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\008-cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001-technology.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001-technology1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\010-upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\002-upload-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\003-can.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\004-arrows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\005-download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\006-retweet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\015-plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\008-cancel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001-bucket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\002-people.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\002-people1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\007-list.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
