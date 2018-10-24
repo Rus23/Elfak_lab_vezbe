@@ -1,0 +1,17 @@
+com\javawebtutor\MyRegService\IServis_za_registraciju.class
+com\javawebtutor\MyRegService\korisnik_service.class
+com\javawebtutor\MyRegService\servis_za_tehnicki_pregled.class
+com\javawebtutor\MyRegService\uspesne_registracije.class
+com\javawebtutor\MyRegService\cene_osiguranja.class
+com\javawebtutor\MyRegService\obavezna_placanja.class
+com\javawebtutor\MyRegService\servis_za_popravku.class
+com\javawebtutor\MyRegService\zahtevi_za_tehnicki_pregled.class
+com\javawebtutor\MyRegService\obradjeni_zahtevi.class
+com\javawebtutor\MyRegService\zahtevi_za_placanje.class
+com\javawebtutor\MyRegService\IServis_za_popravku.class
+com\javawebtutor\MyRegService\IServis_za_tehnicki_pregled.class
+com\javawebtutor\MyRegService\cene_popravke.class
+com\javawebtutor\MyRegService\cene_tehnickog_pregleda.class
+com\javawebtutor\MyRegService\servis_za_registraciju.class
+com\javawebtutor\MyRegService\App.class
+com\javawebtutor\MyRegService\IKorisnik_service.class

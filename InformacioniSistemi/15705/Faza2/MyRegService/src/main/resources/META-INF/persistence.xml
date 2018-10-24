@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+version="2.0">
+
+<persistence-unit name="EmployeePU">
+	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+	<class>com.javawebtutor.MyRegService.zahtevi_za_tehnicki_pregled</class>
+	<class>com.javawebtutor.MyRegService.zahtevi_za_placanje</class>
+	<class>com.javawebtutor.MyRegService.uspesne_registracije</class>
+	<class>com.javawebtutor.MyRegService.obradjeni_zahtevi</class>
+	<class>com.javawebtutor.MyRegService.obavezna_placanja</class>
+	<class>com.javawebtutor.MyRegService.cene_tehnickog_pregleda</class>
+	<class>com.javawebtutor.MyRegService.cene_popravke</class>
+	<class>com.javawebtutor.MyRegService.cene_osiguranja</class>
+
+	<properties>
+		<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3308/primer" />
+		<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+		<property name="hibernate.connection.username" value="personal" />
+		<property name="hibernate.connection.password" value="root" />
+		<property name="hibernate.archive.autodetection" value="class" />
+		<property name="hibernate.show_sql" value="true" />
+		<property name="hibernate.format_sql" value="true" />
+		<property name="hbm2ddl.auto" value="update" />
+	</properties>
+</persistence-unit>
+
+</persistence>
